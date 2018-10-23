@@ -33,56 +33,54 @@ install.packages('methyLImp_0.9.9.tar.gz', repos=NULL, type='source')
 @
 
 \section{Trying it out}
-The package contains a single sample of a full 450K array data, \Robject{GSM1647847}, which can be used to explore the function quickly:
+The package contains a subset of a real 450K Illumina array data, \Robject{GSE64495}, which contains beta values of 100 samples for 200 CpGs with no missing values and it can be used to explore the function quickly:
 
 <<code-block, keep.source=TRUE>>=
 library('methyLImp')
 # load in methyLImp dataset
-data(gsm1647847)
+data(gse64495)
 # display dimensions of data matrix
-dim(gsm1647847)
+dim(gse64495)
 @
 
 \section{Suggested analysis workflow}
 
 \subsection{Load data}
 
-The methylation data array of either beta or M- values has to be split into a CpG labels vector and the corresponding methylation array.
+The methylation data array of either beta or M values has to be split into a CpG labels vector and the corresponding methylation array.
 
 \subsection{Example workflow}
 <<workflow, keep.source=TRUE>>=
 
-data(gsm1647847)
-data(probeAnnotation21k)
-# load in methyLImp dataset and list of CpG involved in Horvat's epigenetic clock analysis
+data(gse64495)
+# load in methyLImp dataset containing no missing value
 
-data(samp)
-# load list of test CpG to impute, here set to 10% of total
+rownames(gse64495) <- as.vector(as.character(gse64495[,1]))
+gse64495          <- t(gse64495[,-1])
 
-match1             <- match(probeAnnotation21k$Name , gsm1647847[,1])
-gsm1647847_21k     <- gsm1647847[match1,]
-gsm1647847_21k     <- t(gsm1647847_21k[,-1])
-# for simplicity here only CpGs considered for Horvat's epigenetic clock are selected 
+gen_rand_NA(dat, frac) {
 
+	m_CpG <- nrow(dat)
+	n_samples <- ncol(dat)
+	NA_tot <- round(frac * m_CpG * n_samples, 1)
 
-# select sampling of missing data
-
-run_methyLImp <- function(dat, samp) {
-        out <- dat
-	out[,samp] <- NA
-
-	for(i in rownames(dat)) {
-                tmp <- dat[i,samp]
-                dat[i,samp] <- NA
-                outtmp <- methyLImp(dat,min=0,max=1)
-		out[i,samp] <- outtmp[i,samp]
-                dat[i,samp] <- tmp
+	set.seed(1)
+        rand_CpG <- sample.int(m_CpG,NA_tot,replace=TRUE)
+	rand_sample <- sample.int(n_samples,NA_tot,replace=TRUE)
+	for(i in 1:NA_tot) {
+	    dat[rand_CpG[i], rand_sample[i]] <- NA
 	}
 }
-# Helper function to run method
 
-imputed_data = run_methyLImp(gsm1647847_21k, samp)
-# run method
+NA_frac <- 0.1
+gse64495_miss <- gen_rand_NA(gse64495, NA_frac)
+#generate the desired fraction (<=1) of missing values at random in the dataset
+
+gse64495_imputed = methyLImp(gse64495_miss, min=0, max=1)
+# impute missing data with methyLImp method
+
+# compare statistics of imputed and original values
+
 
 @
 
