@@ -1,5 +1,4 @@
 \name{methyLImp}
-%\alias{agep}
 \title{
 Linear regression model for beta-values imputation
 }
