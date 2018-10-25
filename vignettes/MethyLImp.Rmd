@@ -37,48 +37,79 @@ The package contains a subset of a real 450K Illumina array data, \Robject{GSE64
 
 <<code-block, keep.source=TRUE>>=
 library('methyLImp')
-# load in methyLImp dataset
 data(gse64495)
-# display dimensions of data matrix
+# load in methyLImp dataset
 dim(gse64495)
+# display dimensions of data.frame
+# to display CpG and sample names, type rownames(gse64495) and colnames(gse64495), respectively. 
 @
 
 \section{Suggested analysis workflow}
 
 \subsection{Load data}
 
-The methylation data array of either beta or M values has to be split into a CpG labels vector and the corresponding methylation array.
+The methylation data array of either beta or M values has to transposed before imputation.
 
 \subsection{Example workflow}
 <<workflow, keep.source=TRUE>>=
 
 data(gse64495)
-# load in methyLImp dataset containing no missing value
+# load in the methyLImp dataset containing no missing value
 
-rownames(gse64495) <- as.vector(as.character(gse64495[,1]))
-gse64495          <- t(gse64495[,-1])
-
-gen_rand_NA(dat, frac) {
-
+gen_rand_NA <- function(dat, frac) {
 	m_CpG <- nrow(dat)
 	n_samples <- ncol(dat)
 	NA_tot <- round(frac * m_CpG * n_samples, 1)
-
 	set.seed(1)
         rand_CpG <- sample.int(m_CpG,NA_tot,replace=TRUE)
 	rand_sample <- sample.int(n_samples,NA_tot,replace=TRUE)
-	for(i in 1:NA_tot) {
-	    dat[rand_CpG[i], rand_sample[i]] <- NA
-	}
+        result <- matrix(c(rand_CpG, rand_sample),ncol=2)
 }
-
-NA_frac <- 0.1
-gse64495_miss <- gen_rand_NA(gse64495, NA_frac)
 #generate the desired fraction (<=1) of missing values at random in the dataset
 
-gse64495_imputed = methyLImp(gse64495_miss, min=0, max=1)
-# impute missing data with methyLImp method
+NA_frac <- 0.1
+# choose fraction of data to be imputed
 
+rand_NA <- gen_rand_NA(gse64495, NA_frac)
+# vector of matrix element idx
+
+gse64495_miss <- gse64495
+for(i in 1:nrow(rand_NA)) {
+    gse64495_miss[rand_NA[i,1],rand_NA[i,2]] <- NA
+}
+# insert missing value NA at selected random position in the data.frame
+
+t_gse64495_imputed <- methyLImp(t(gse64495_miss), min=0, max=1)
+gse64495_imputed <- t(t_gse64495_imputed) 
+# impute missing data with methyLImp method
+# please note the imputation routine accepts the transposed matrix
+
+imputation_stats <- function( dat, dat_imputed, idx) {
+    
+    n_imp <- nrow(idx)
+    val_true <- rep(0.00, n_imp)
+    val_imputed <- rep(0.00, n_imp)  
+    for(i in 1:n_imp) {
+      val_true[i] <- dat[idx[i,1],idx[i,2]]
+      val_imputed[i] <- dat_imputed[idx[i,1],idx[i,2]]
+    }
+    
+    diff <- val_imputed - val_true
+    rmse <- sqrt(sum(diff*diff)/n_imp)
+    mae  <- sum(abs(diff))/n_imp
+    mape <- (100/n_imp)*sum(abs(diff)/abs(val_true))
+    pccr <- sum((val_imputed - mean(val_imputed))*(val_true - mean(val_true)))/(sqrt(sum((val_imputed - mean(val_imputed))*(val_imputed - mean(val_imputed))))*sqrt(sum((val_true - mean(val_true))*(val_true - mean(val_true)))))
+    
+    cat(sprintf("Summary statistics of imputation with methyLImp method\n"))
+    cat(sprintf("%i randomly chosen values were imputed out of %i total values in the methylation array \n", n_imp, nrow(dat)*ncol(dat)))
+    cat(sprintf("Root Mean Square Error: %f \n", rmse))
+    cat(sprintf("Mean Absolute Error: %f \n", mae))
+    cat(sprintf("Root Mean Absolute Percentage Error: %f \n", mape))
+    cat(sprintf("Pearson Correlation Coefficient: %f \n", pccr))
+
+}
+
+imputation_stats(gse64495, gse64495_imputed, rand_NA) 
 # compare statistics of imputed and original values
 
 
