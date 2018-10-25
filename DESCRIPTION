@@ -1,4 +1,4 @@
-Package: MethyLImp
+Package: methyLImp
 Type: Package
 Title: Missing Value Estimation of DNA Methylation Data
 Version: 0.9.9
