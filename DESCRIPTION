@@ -1,7 +1,7 @@
 Package: MethyLImp
 Type: Package
 Title: Missing Value Estimation of DNA Methylation Data
-Version: 1.0.0
+Version: 0.9.9
 Author: Pietro Di Lena
 Maintainer: Pietro Di Lena <pietro.dilena@unibo.it>
 Description: A method based on single value decomposition for missing value estimation of Illumina 450 methylation array.
@@ -9,5 +9,5 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 BiocViews: 	DNAMethylation, Microarray, , Software
-Suggests: knitr, rmarkdown
+Suggests: knitr, sweave
 VignetteBuilder: knitr
