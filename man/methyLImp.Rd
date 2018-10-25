@@ -1,4 +1,5 @@
 \name{methyLImp}
+\alias{methyLImp}
 \title{
 Linear regression model for beta-values imputation
 }
@@ -9,7 +10,7 @@ Imputes missing DNA methylation data
 methyLImp(dat, min = NULL, max = NULL, max.sv = NULL, col.list = NULL) 
 }
 \arguments{
-  \item{data}{
+  \item{dat}{
 Matrix of betas or M-values
 }
   \item{min}{
