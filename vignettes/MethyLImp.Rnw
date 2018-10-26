@@ -38,7 +38,7 @@ install.packages('methyLImp_0.9.9.tar.gz', repos=NULL, type='source')
 The package contains a subset of a real 450K Illumina array data, \Robject{GSE64495}, which contains beta values
 of 100 samples for 200 CpGs with no missing values and it can be used to explore the function quickly:
 
-<<code-block, keep.source=TRUE>>=
+<<code-block, echo=TRUE>>=
 library('methyLImp')
 data(gse64495)
 # load in methyLImp dataset
@@ -54,7 +54,7 @@ dim(gse64495)
 The methylation data array of either beta or M values has to transposed before imputation.
 
 \subsection{Example workflow}
-<<workflow, keep.source=TRUE>>=
+<<workflow, echo=TRUE>>=
 
 data(gse64495)
 # load in the methyLImp dataset containing no missing value
