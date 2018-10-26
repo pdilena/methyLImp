@@ -2,7 +2,6 @@
 ---
 title: "methyLImp"
 author: "Pietro Di Lena"
-date: "`r doc_date()`"
 output: BiocStyle::pdf_document2
 vignette: >
   %\VignetteIndexEntry{methyLImp}
