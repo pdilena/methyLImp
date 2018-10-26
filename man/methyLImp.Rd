@@ -40,5 +40,5 @@ Pietro Di Lena
 % \note{}
 
 \examples{
-methyLImp(data,min=0,max=1)
+
 }
