@@ -6,7 +6,7 @@ date: "`r doc_date()`"
 output: BiocStyle::pdf_document2
 vignette: >
   %\VignetteIndexEntry{methyLImp}
-  %\VignetteEngine{knitr::latex}
+  %\VignetteEngine{knitr::knitr}
   \usepackage[utf8]{inputenc}
 ---
 
