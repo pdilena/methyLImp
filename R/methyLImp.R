@@ -25,7 +25,7 @@ inv.plogit <- function(x, min=0, max=1)
 	# fix problems with +Inf
 	p <- ifelse(is.na(p) & !is.na(x), 1, p )               
 	# fix 0 rounding
-	p <- ifelse(p <= exp(logit(0))/(1+exp(logit(0))), 0, p)
+	p <- ifelse(p <= exp(plogit(0))/(1+exp(plogit(0))), 0, p)
 	p * (max-min) + min
 }
 
