@@ -7,8 +7,9 @@ output: BiocStyle::pdf_document2
 vignette: >
   %\VignetteIndexEntry{methyLImp}
   %\VignetteEngine{knitr::knitr}
-  \usepackage[utf8]{inputenc}
+  %\VignetteEncoding{UTF-8}
 ---
+\documentclass[11pt]{article}
 
 \newcommand{\Rfunction}[1]{{\texttt{#1}}}
 \newcommand{\Robject}[1]{{\texttt{#1}}}
