@@ -1,9 +1,11 @@
  
 ---
-title: "MethyLImp"
-output: rmarkdown::html_vignette
+title: "methyLImp"
+author: "Pietro Di Lena"
+date: "`r doc_date()`"
+output: BiocStyle::pdf_document2
 vignette: >
-  %\VignetteIndexEntry{missMethy}
+  %\VignetteIndexEntry{methyLImp}
   %\VignetteEngine{knitr::latex}
   \usepackage[utf8]{inputenc}
 ---
