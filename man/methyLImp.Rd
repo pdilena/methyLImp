@@ -40,5 +40,27 @@ Pietro Di Lena
 % \note{}
 
 \examples{
+## Load the methyLImp dataset, containing no missing value
+data(gse64495)
+summary(gse64495)
 
+## Artificially introduce 10% missing values in the first sample
+## with the gen_randNA function
+set.seed(50)
+samp <- 1
+frac <- 0.1
+gse64495.mis <- gen_randNA(gse64495,samp,frac)
+summary(gse64495.mis)
+
+## Impute the missing values with the methyLImp routine.
+## Note that variables need to be on the columns and
+## samples on the rows.
+gse64495.imp <- methyLImp(t(gse64495.mis),min=0,max=0)
+gse64495.imp <- t(gse64495.imp)
+
+## Compare imputed and original values
+miss <- is.na(gse64495.mis[,samp])
+orig <- gse64495[miss,samp]
+pred <- gse64495.imp[miss,samp]
+gen_stat(orig,pred)
 }
