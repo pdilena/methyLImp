@@ -16,6 +16,7 @@ BiocStyle::markdown()
 
 ```{r setup, include=FALSE}
 library(knitr)
+library(methyLImp)
 ```
 
 ### The `methyLImp` Package
