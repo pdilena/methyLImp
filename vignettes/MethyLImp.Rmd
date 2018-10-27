@@ -1,0 +1,96 @@
+ 
+---
+title: "methyLImp"
+author: "Pietro Di Lena"
+date: "`r Sys.Date()`"
+output: BiocStyle::html_document
+vignette: >
+  %\VignetteIndexEntry{methyLImp}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r style, echo = FALSE, results = 'asis'}
+BiocStyle::markdown()
+```
+
+```{r setup, include=FALSE}
+library(knitr)
+```
+
+### The `methyLImp` Package
+
+## Pietro Di Lena
+
+## About the package 
+The `methyLImp` implements a missing data imputation method based on single imputation linear regression,
+especially designed for and tested on DNA methylation data [1].
+
+
+
+## Installation
+
+The package doesn't have any dependencies from other Bioconductor packages.
+
+Installing the latest package from a local copy (assuming it is in the current working
+directory of your R session):
+
+```{r eval=FALSE}
+install.packages('methyLImp_0.9.9.tar.gz', repos=NULL, type='source')
+```
+
+## Trying it out
+The package contains a subset of a real 450K Illumina array data, `GSE64495`, which contains beta values
+of 100 samples for 200 CpGs with no missing values and it can be used to explore the function quickly:
+
+```{r echo=TRUE}
+library('methyLImp')
+data(gse64495)
+# load in methyLImp dataset
+summary(gse64495)
+```
+
+## Suggested analysis workflow
+
+# Load data
+
+The methylation data array of either beta or M values has to transposed before imputation,
+as variables need to be on the columns and samples on the rows.
+
+# Example workflow
+
+```{r echo=TRUE}
+
+## Load the methyLImp dataset, containing no missing value
+data(gse64495)
+summary(gse64495)
+
+## Artificially introduce 10% missing values in the first sample
+## with the gen_randNA function
+set.seed(50)
+samp <- 1
+frac <- 0.1
+gse64495.mis <- gen_randNA(gse64495,samp,frac)
+summary(gse64495.mis)
+
+## Impute the missing values with the methyLImp routine.
+## Note that variables need to be on the columns and
+## samples on the rows.
+gse64495.imp <- methyLImp(t(gse64495.mis),min=0,max=0)
+gse64495.imp <- t(gse64495.imp)
+
+## Compare imputed and original values
+miss <- is.na(gse64495.mis[,samp])
+orig <- gse64495[miss,samp]
+pred <- gse64495.imp[miss,samp]
+gen_stat(orig,pred)
+
+```
+
+## References
+
+[1] Di Lena P, Sala C, Prodi A, Nardini C. Missing value estimation methods for DNA methylation data. submitted to Bioinformatics
+
+
+
+
