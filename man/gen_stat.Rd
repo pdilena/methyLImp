@@ -11,10 +11,10 @@ gen_stat(original, imputed)
 }
 \arguments{
   \item{original}{
-Original matrix of betas or M-values before imputation
+Vector of original beta or M-values.
 }
   \item{imputed}{
-Matrix of betas or M-values after imputation
+Vector of imputed beta or M-values.
 }  
 }
 %\details{}
@@ -22,7 +22,6 @@ Matrix of betas or M-values after imputation
 Returns a detailed summary of the performance statistics of the imputed array.
 }
 \references{
-Di Lena P et al: Missing value estimation methods for DNA methylation data. submitted to Bioinformatics
 }
 \author{
 Pietro Di Lena
