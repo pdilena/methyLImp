@@ -11,13 +11,13 @@ gen_randNA(dat, col, frac)
 }
 \arguments{
   \item{dat}{
-Matrix of betas or M-values
+Matrix of betas or M-values. Variables are on the rows and samples on the columns.
 }
   \item{col}{
-Column for missing data insertion
+Column for missing data insertion.
 }  
   \item{frac}{
-Fraction of missing data to be inserted
+Fraction of missing data to be inserted.
 }
 }
 %\details{}
@@ -25,7 +25,7 @@ Fraction of missing data to be inserted
 Returns input data array with the missing values inserted.
 }
 \references{
-Di Lena P et al: Missing value estimation methods for DNA methylation data. submitted to Bioinformatics
+
 }
 \author{
 Pietro Di Lena
