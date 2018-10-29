@@ -7,7 +7,7 @@ Linear regression model for beta-values imputation
 Imputes missing DNA methylation data
 }
 \usage{
-methyLImp(dat, min = NULL, max = NULL, max.sv = NULL, col.list = NULL) 
+methyLImp(dat, min = 0, max = 1, max.sv = NULL, col.list = NULL) 
 }
 \arguments{
   \item{dat}{
