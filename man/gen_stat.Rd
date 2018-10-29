@@ -7,7 +7,7 @@ Calculation of imputation performance statistics
 Calculates the performances statistics of an imputed methylation array with respect to four metrics: Root Mean Square Error, Mean Absolute Error, Pearson Correlation Coefficient and Mean Absolute Percentage Error. 
 }
 \usage{
-gen_randNA(original, imputed) 
+gen_stat(original, imputed) 
 }
 \arguments{
   \item{original}{
