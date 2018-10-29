@@ -1,2 +1,3 @@
 #exportPattern("^[[:alpha:]]+")
-export('methyLImp')
+export('methyLImp','gen_randNA')
+importFrom("stats", "cor")
