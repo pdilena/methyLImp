@@ -24,7 +24,7 @@ Max number of singular values to be used in the psuedoinvers matrix.
 The parameter is used to reduce the matrix rank.
 }
   \item{col.list}{
-Convert col.list, if any, from names to numbers
+Number of names of columns on which to restrict imputation. If NULL, performs imputation on all columns.
 }
 }
 %\details{}
