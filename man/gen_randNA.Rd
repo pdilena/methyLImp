@@ -7,7 +7,7 @@ Generation of missing values at random locations in a data array
 Introduces a random amount of missing values in a single column of the data array. 
 }
 \usage{
-methyLImp(dat, min = NULL, max = NULL, max.sv = NULL, col.list = NULL) 
+gen_randNA(dat, col, frac) 
 }
 \arguments{
   \item{dat}{
