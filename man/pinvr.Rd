@@ -1,5 +1,5 @@
-\name{inv.plogit}
-\alias{inv.plogit}
+\name{pinvr}
+\alias{pinvr}
 \title{
 Moore-Penrose generalized inverse of a matrix
 }
