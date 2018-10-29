@@ -88,6 +88,10 @@ gen_stat(orig,pred)
 
 ```
 
+```{r echo=FALSE}
+sessionInfo()
+```
+
 ## References
 
 [1] Di Lena P, Sala C, Prodi A, Nardini C. Missing value estimation methods for DNA methylation data. submitted to Bioinformatics
