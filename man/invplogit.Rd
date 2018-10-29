@@ -12,13 +12,13 @@ inv.plogit(x, min=0, max=1)
 }
 \arguments{
   \item{x}{
-Data to be transformed  
+Numeric value in the domain [-inf,+inf]  
 }
   \item{min}{
-minimum value for bound
+Minimum range value 
 }  
   \item{max}{
-maximum value for bond
+Maximum range value
 }  
 }
 %\details{}
@@ -26,7 +26,6 @@ maximum value for bond
 Returns the inverse logit transformed values.
 }
 \references{
-Di Lena P et al: Missing value estimation methods for DNA methylation data. submitted to Bioinformatics
 }
 \author{
 Pietro Di Lena
