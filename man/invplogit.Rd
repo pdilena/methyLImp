@@ -30,10 +30,10 @@ Pietro Di Lena
 }
 % \note{}
 \examples{
-# Display system's double machine precision
-print(.Machine$double.neg.eps)
-# With inv.logit function
-print(inv.plogit(0))
-# With machine.precision 
-print(inv.plogit(.Machine$double.neg.eps))
+# Minimum value of the pseudo logit function
+x <- plogit(0)
+
+# Both return 0
+inv.plogit(x-1)
+inv.plogit(x)
 }

@@ -30,10 +30,15 @@ Pietro Di Lena
 }
 % \note{}
 \examples{
-# Display system's double machine precision
-print(.Machine$double.neg.eps)
-# Without logit function
-print(log(0))
-# With logit function
-print(log(plogit(0)))
+p <-0
+# Logistic function at 0
+log(p/(1-p))
+
+# Logistic function at approx 10^-16
+p <- .Machine$double.neg.eps
+log(p/(1-p))
+
+# Pseudo logistic function at 0 is equivalent
+# to logistic function at 10^-16
+plogit(0)
 }
