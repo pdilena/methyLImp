@@ -29,3 +29,11 @@ Returns the inverse logit transformed values.
 Pietro Di Lena
 }
 % \note{}
+\examples{
+# Display system's double machine precision
+print(.Machine$double.neg.eps)
+# With inv.logit function
+print(inv.plogit(0))
+# With machine.precision 
+print(inv.plogit(.Machine$double.neg.eps))
+}
