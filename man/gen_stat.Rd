@@ -21,8 +21,6 @@ Vector of imputed beta or M-values.
 \value{
 Returns a detailed summary of the performance statistics of the imputed array.
 }
-\references{
-}
 \author{
 Pietro Di Lena
 }
