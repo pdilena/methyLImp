@@ -9,5 +9,5 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 biocViews: 	DNAMethylation, Microarray, Software
-Suggests: BiocStyle, knitr, rmarkdown
+Suggests: BiocStyle, stats, knitr, rmarkdown
 VignetteBuilder: knitr
