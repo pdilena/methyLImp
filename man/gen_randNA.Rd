@@ -24,9 +24,6 @@ Fraction of missing data to be inserted.
 \value{
 Returns input data array with the missing values inserted.
 }
-\references{
-
-}
 \author{
 Pietro Di Lena
 }
