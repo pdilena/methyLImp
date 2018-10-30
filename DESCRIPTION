@@ -8,6 +8,6 @@ Description: A method based on single value decomposition for missing value esti
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-BiocViews: 	DNAMethylation, Microarray, Software
+biocViews: 	DNAMethylation, Microarray, Software
 Suggests: BiocStyle, knitr, rmarkdown
 VignetteBuilder: knitr
