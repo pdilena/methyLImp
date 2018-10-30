@@ -25,8 +25,6 @@ Maximum range value
 \value{
 Returns the inverse logit transformed values.
 }
-\references{
-}
 \author{
 Pietro Di Lena
 }
