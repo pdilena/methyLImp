@@ -29,3 +29,11 @@ Returns the logit transformed values.
 Pietro Di Lena
 }
 % \note{}
+\examples{
+# Display system's double machine precision
+print(.Machine$double.neg.eps)
+# Without logit function
+print(log(0))
+# With logit function
+print(log(plogit(0))
+}
