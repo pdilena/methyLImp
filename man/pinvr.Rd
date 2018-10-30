@@ -28,9 +28,6 @@ A relative tolerance to detect zero singular values.
 \value{
 Returns the Moore-Penrose pseuo-inverse of the matrix X. 
 }
-\references{
-
-}
 \author{
 Pietro Di Lena
 }
