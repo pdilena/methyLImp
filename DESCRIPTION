@@ -5,9 +5,10 @@ Version: 0.99.1
 Author: Pietro Di Lena
 Maintainer: Pietro Di Lena <pietro.dilena@unibo.it>
 Description: A method based on single value decomposition for missing value estimation of Illumina 450 methylation array.
+Imports: stats
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
 biocViews: 	DNAMethylation, Microarray, Software
-Suggests: BiocStyle, stats, knitr, rmarkdown
+Suggests: BiocStyle, knitr, rmarkdown
 VignetteBuilder: knitr
