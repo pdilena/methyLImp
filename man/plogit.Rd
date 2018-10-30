@@ -35,5 +35,5 @@ print(.Machine$double.neg.eps)
 # Without logit function
 print(log(0))
 # With logit function
-print(log(plogit(0))
+print(log(plogit(0)))
 }
