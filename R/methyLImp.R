@@ -51,7 +51,7 @@ pinvr <- function(X, max.sv = min(dim(X)), tol = sqrt(.Machine$double.eps))
 	# Rank reduction extension: START
 	max.sv      <- min(ifelse(max.sv < 0, 1, max.sv),min(dim(X)))
 	L           <- logical(length(Positive))
-	L[1:max.sv] <- TRUE
+	L[seq_len(max.sv)] <- TRUE
 	Positive    <- Positive & L
 	# Rank reduction extension: END
 
