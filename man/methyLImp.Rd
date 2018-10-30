@@ -32,7 +32,7 @@ Number of names of columns on which to restrict imputation. If NULL, performs im
 Returns imputed values for the missing values.
 }
 \references{
-Di Lena P et al: Missing value estimation methods for DNA methylation data. submitted to Bioinformatics
+Di Lena P et al: Missing value estimation methods for DNA methylation data, submitted.
 }
 \author{
 Pietro Di Lena
